@@ -64,7 +64,7 @@ def search(request):
 				count = count+1;
 			return HttpResponse(hh+end)
 			#return render_to_response('map.html',{'test':res})
-		except Person.DoesNotExist:
+		except:
 			return HttpResponse("no such user")  
 	else:
 		return render(request, 'form.html')
