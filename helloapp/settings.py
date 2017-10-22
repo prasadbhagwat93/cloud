@@ -25,8 +25,8 @@ SECRET_KEY = '+ps(^qr-^4p#s_2=drcfe*)@+zyq+@sxf!3=rm$m8gg@e66(1p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["twitt-nawleji-dev.us-east-1.elasticbeanstalk.com"]
-
+ALLOWED_HOSTS = ["twitt-nawleji-dev.us-east-1.elasticbeanstalk.com","127.0.0.1"]
+#PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Application definition
 
