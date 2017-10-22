@@ -22,7 +22,7 @@ def search(request):
 		#file_ = open(os.path.join(PROJECT_ROOT, 'filename'))
 		search_id = request.POST.get('textfield', None)
 		try:
-			with open('/home/ec2-user/twitt1508084081.76') as f:
+			with open('twitt1508098658.88') as f:
 				content = f.readlines()
 			content = [x.strip() for x in content]
 			temp = []
