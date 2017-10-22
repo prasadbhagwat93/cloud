@@ -27,7 +27,7 @@ def search(request):
 			temp = []
 			res = []
 			for item in content:
-				if "hazard" in str(item):
+				if search_id in str(item):
 					temp.append(item)
 			for i in temp:
 				try:
@@ -40,14 +40,29 @@ def search(request):
 					url = url+loc+"&key=AIzaSyCQk5ru6Y-42Z1kcsiae_O6oHBnDW_ib5w"
 					response = json.loads(requests.get(url).text)
 					lat_long = response["results"][0]["geometry"]["location"]
-					res.append(str(lat_long))
+					res.append(lat_long)
 				except Exception as e:
-					res.append(str(e))
+					#res.append(str(e))
+					pass
                 			#print(lat_long)
 	
-			html = ("<H1>%s</H1>", str(res))
-			#return HttpResponse(html)
-			return render_to_response('map.html',{'test':res})
+			hh="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\"> \
+  <head> <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\"/> <title>Google Maps JavaScript API Example: Simple Map</title> \
+    <script src=\"http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp\"\
+ type=\"text/javascript\"></script> <script type=\"text/javascript\"> function initialize() {if (GBrowserIsCompatible()) {\
+        var map = new GMap2(document.getElementById(\"map_canvas\"));\
+        map.setCenter(new GLatLng(39.8163, -98.55762), 4);var point = new GLatLng(39.8163, -98.55762);"
+	
+			end="map.setUIToDefault();\
+        map.addOverlay(new GMarker(point));} }</script> </head> <body onload=\"initialize()\" onunload=\"GUnload()\"> <div id=\"map_canvas\" style=\"width: 750px; height: 500px\"></div> </body> </html>"
+			bar = []
+			count = 0;
+			for foo in res:
+				hh = hh + "var point"+str(count)+" = new GLatLng("+str(foo["lat"])+","+str(foo["lng"])+");"
+				end = "map.addOverlay(new GMarker("+"point"+str(count)+"));"+end
+				count = count+1;
+			return HttpResponse(hh+end)
+			#return render_to_response('map.html',{'test':res})
 		except Person.DoesNotExist:
 			return HttpResponse("no such user")  
 	else:
