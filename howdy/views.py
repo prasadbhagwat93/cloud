@@ -10,7 +10,8 @@ from django.core.exceptions import *
 import os
 import json
 import requests
-from urllib.request import urlopen
+import urllib2
+#from urllib.request import urlopen
 #from django.conf.settings import PROJECT_ROOT
 class HomePageView(TemplateView):
 	def get(self, request, **kwargs):
@@ -38,7 +39,7 @@ def search(request):
 					for j in location:
 						loc = loc+j+"+"
 					url = url+loc+"&key=AIzaSyCQk5ru6Y-42Z1kcsiae_O6oHBnDW_ib5w"
-					response = json.loads(requests.get(url).text)
+					response = json.load(urllib2.urlopen(url))
 					lat_long = response["results"][0]["geometry"]["location"]
 					res.append(str(lat_long))
 				except Exception as e:
