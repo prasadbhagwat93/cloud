@@ -10,7 +10,8 @@ from django.core.exceptions import *
 import os
 import json
 import requests
-from urllib.request import urlopen
+
+#from urllib.request import urlopen
 #from django.conf.settings import PROJECT_ROOT
 import boto3
 from django.template import loader, Context
@@ -63,6 +64,7 @@ def search(request):
             return HttpResponse("lol")
     else:
         return render(request, "form.html")
+			#return render_to_response('map.html',{'test':res})
 
 def index(request):
     return render(request, "form.html")
