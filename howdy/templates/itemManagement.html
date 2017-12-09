@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Management</title>
+</head>
+<body>
+
+<script>
+    function showTable(obj){
+ alert(obj.value)
+}
+
+</script>
+
+</body>
+
+<form method="POST" action="/add">
+{% csrf_token %}
+<input type="text" name="textfield">
+    <button type="submit">Add Items</button>
+</form>
+
+<br></br>
+
+<form method="POST" action="/delete">
+{% csrf_token %}
+<input type="text" name="textfield">
+    <button type="submit">Delete Items</button>
+</form>
+
+<br></br>
+
+<form method="POST" action="/view">
+{% csrf_token %}
+    <button type="submit">view Items</button>
+</form>
+
+
+
+</html>

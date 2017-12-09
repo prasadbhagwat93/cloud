@@ -1,0 +1,22 @@
+<form method="POST" action="/index">
+{% csrf_token %}
+<input type="text" name="login">
+    <br></br>
+    <input type="text" name="password">
+    <button type="submit">login</button>
+
+
+</form>
+
+
+
+<form method="POST" action="/signup">
+{% csrf_token %}
+<input type="text" name="login">
+    <br></br>
+    <input type="text" name="password">
+    <button type="submit">sign up</button>
+
+
+
+</form>

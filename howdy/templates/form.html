@@ -1,6 +1,17 @@
 <form method="POST" action="/search">
 {% csrf_token %}
 <input type="text" name="textfield">
-
-<button type="submit">Upload text</button>
+    <button type="submit">Upload text</button>
 </form>
+
+<form method="POST" action="/locations">
+{% csrf_token %}
+    <button type="submit">My Options</button>
+</form>
+
+
+<form method="POST" action="/itemManagment">
+{% csrf_token %}
+    <button type="submit">Mangage items</button>
+</form>
+
